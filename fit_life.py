@@ -1,14 +1,6 @@
 # Проект FitLife - MVP версия 1.0
 
 
-def get_sufix_age(age): # type: ignore определение суфикса лет/год/года для возраста
-    if ((age % 10 == 1) and (age % 100 != 11)):
-        return 'год'
-    elif ((age % 10 in [2, 3, 4]) and not (age % 100 in [12, 13, 14])):
-        return 'года'
-    else:
-        return 'лет'
-
 # 1. Приветствие
 print('Вас приветствует цифровой фитнес-трекер')
 print()
@@ -48,10 +40,8 @@ water_liters = water_needed/1000
 
 # 5. Вывод красивого результата
 print('')
-print('-'*40)
-print('Отчет для пользователя:',user_name,'('+str(user_age),get_sufix_age(user_age)+')')
+print('Отчет для пользователя:',user_name,'('+str(user_age)+' г.)')
 print('Ваш Индекс Массы Тела:',bmi)
 print(f"Рекомендуемая норма воды: {water_liters:.1f} л. в день")
 print()
 print("Расчет окончен. Будьте здоровы!")
-print('-'*40)
