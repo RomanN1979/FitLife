@@ -7,7 +7,7 @@ print()
 
 # 2. Знакомство
 user_name = input('Введите Ваше имя:')
-user_name = user_name.title() if bool(user_name) else 'АНОНИМ'
+user_name = user_name.title() if user_name else 'АНОНИМ'
 
 while True:
     try:
@@ -16,7 +16,7 @@ while True:
     except ValueError:
         print('Ошибка: введите пожалуйста, целое число лет.')
 
-# 3. Сбор данных    
+# 3. Сбор данных
 while True:
     try:
         user_weight = float(input('Введите Ваш вес (в кг):'))
@@ -26,14 +26,14 @@ while True:
 
 while True:
     try:
-        user_height = float(input('Введите Ваш рост (в метрах, например 1.75):'))
+        user_height = float(input('Введите Ваш рост (в метрах):'))
         break
     except ValueError:
         print('Ошибка: введите пожалуйста число (например 1.75)')
 
-# 4. Вычисление  
-bmi = user_weight / (user_height**2) # расчёт индекса массы тела
-bmi = round(bmi, 1) # округление до одного знака после запятой
+# 4. Вычисление
+bmi = user_weight / (user_height**2)  # расчёт индекса массы тела
+bmi = round(bmi, 1)  # округление до одного знака после запятой
 # Подсчет воды: вес * 30 мл
 water_needed = user_weight * 30
 water_liters = water_needed / 1000
