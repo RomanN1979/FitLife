@@ -1,6 +1,31 @@
 # Проект FitLife - MVP версия 1.0
+WATER_PER_KG = 30
+ML_IN_LITER = 1000
 
+def classification_wno(bmi_value): # Классификация по ВОЗ
+    if (bmi_value < 16.0): 
+        return 'Выраженный дефицит массы тела'
+    elif (16.0 <= bmi_value <=18.4):
+        return 'Недостаточная масса тела'
+    elif (18.5 <= bmi_value <=24.9):
+        return 'Нормальная масса тела'
+    elif (25.0 <= bmi_value <=29.9):
+        return 'Избыточная масса тела (предожирение)'
+    elif (30.0 <= bmi_value <=34.9):
+        return 'Ожирение I степени'
+    elif (35.0 <= bmi_value <=39.9):
+        return 'Ожирение II степени'
+    else:
+        return 'Ожирение III степени (морбидное)'
 
+def get_sufix_age(age): # определение суфикса лет/год/года для возраста
+    if ((age % 10 == 1) and (age % 100 != 11)):
+        return 'год'
+    elif ((age % 10 in [2, 3, 4]) and not (age % 100 in [12, 13, 14])):
+        return 'года'
+    else:
+        return 'лет'
+    
 # 1. Приветствие
 print('Вас приветствует цифровой фитнес-трекер')
 print()
@@ -35,13 +60,13 @@ while True:
 bmi = user_weight / (user_height**2)  # расчёт индекса массы тела
 bmi = round(bmi, 1)  # округление до одного знака после запятой
 # Подсчет воды: вес * 30 мл
-water_needed = user_weight * 30
-water_liters = water_needed / 1000
+water_needed = user_weight * WATER_PER_KG
+water_liters = water_needed / ML_IN_LITER
 
-# 5. Вывод красивого результата
-print('')
-print('Отчет для пользователя:', user_name, '(' + str(user_age) + ' г.)')
-print('Ваш Индекс Массы Тела:', bmi)
-print(f"Рекомендуемая норма воды: {water_liters:.1f} л. в день")
+# 5. Вывод результата
 print()
-print("Расчет окончен. Будьте здоровы!")
+print(f'Отчет для пользователя: {user_name}  ({str(user_age)} {get_sufix_age(user_age)})')
+print(f'Ваш Индекс Массы Тела: {bmi} ({classification_wno(bmi)})')
+print(f'Рекомендуемая норма воды: {water_liters:.1f} л. в день')
+print()
+print('Расчет окончен. Будьте здоровы!')
