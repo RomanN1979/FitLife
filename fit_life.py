@@ -2,8 +2,10 @@
 WATER_PER_KG = 30
 ML_IN_LITER = 1000
 
+
 # Классификация по ВОЗ
 def explan_wno(bmi_value):
+    """Возвращает пояснение значеня индекса массы тела по классификации ВОЗ"""
     if (bmi_value < 16.0):
         return 'Выраженный дефицит массы тела'
     elif (16.0 <= bmi_value <= 18.4):
@@ -21,6 +23,7 @@ def explan_wno(bmi_value):
 
 # определение суфикса лет/год/года для возраста
 def sufix_age(age):
+    """Возвращает суфикс для возраста (лет/год/года)"""
     if ((age % 10 == 1) and (age % 100 != 11)):
         return 'год'
     elif ((age % 10 in [2, 3, 4]) and not (age % 100 in [12, 13, 14])):
@@ -68,7 +71,7 @@ water_liters = water_needed / ML_IN_LITER
 
 # 5. Вывод результата
 print()
-print(f'Отчет для пользователя: {user_name}  ({str(user_age)} {sufix_age(user_age)})')
+print(f'Отчет для пользователя: {user_name}  ({user_age} {sufix_age(user_age)})')
 print(f'Ваш Индекс Массы Тела: {bmi} ({explan_wno(bmi)})')
 print(f'Рекомендуемая норма воды: {water_liters:.1f} л. в день')
 print()
