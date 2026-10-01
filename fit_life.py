@@ -2,9 +2,9 @@
 WATER_PER_KG = 30
 ML_IN_LITER = 1000
 
-
-def classification_wno(bmi_value):  # Классификация по ВОЗ
-    if (bmi_value < 16.0): 
+# Классификация по ВОЗ
+def explan_wno(bmi_value):
+    if (bmi_value < 16.0):
         return 'Выраженный дефицит массы тела'
     elif (16.0 <= bmi_value <= 18.4):
         return 'Недостаточная масса тела'
@@ -19,14 +19,15 @@ def classification_wno(bmi_value):  # Классификация по ВОЗ
     else:
         return 'Ожирение III степени (морбидное)'
 
-
-def get_sufix_age(age):  # определение суфикса лет/год/года для возраста
+# определение суфикса лет/год/года для возраста
+def sufix_age(age):
     if ((age % 10 == 1) and (age % 100 != 11)):
         return 'год'
     elif ((age % 10 in [2, 3, 4]) and not (age % 100 in [12, 13, 14])):
         return 'года'
     else:
         return 'лет'
+
 
 # 1. Приветствие
 print('Вас приветствует цифровой фитнес-трекер')
@@ -67,8 +68,8 @@ water_liters = water_needed / ML_IN_LITER
 
 # 5. Вывод результата
 print()
-print(f'Отчет для пользователя: {user_name}  ({str(user_age)} {get_sufix_age(user_age)})')
-print(f'Ваш Индекс Массы Тела: {bmi} ({classification_wno(bmi)})')
+print(f'Отчет для пользователя: {user_name}  ({str(user_age)} {sufix_age(user_age)})')
+print(f'Ваш Индекс Массы Тела: {bmi} ({explan_wno(bmi)})')
 print(f'Рекомендуемая норма воды: {water_liters:.1f} л. в день')
 print()
 print('Расчет окончен. Будьте здоровы!')
