@@ -4,7 +4,7 @@ ML_IN_LITER = 1000
 
 
 # Классификация по ВОЗ
-def explan_wno(bmi_value):
+def explan_who(bmi_value):
     """Возвращает пояснение значеня индекса массы тела по классификации ВОЗ"""
     if (bmi_value < 16.0):
         return 'Выраженный дефицит массы'
@@ -69,7 +69,7 @@ bmi = round(bmi, 1)  # округление до одного знака пос�
 # Подсчет воды: вес * 30 мл
 water_needed = user_weight * WATER_PER_KG
 water_liters = water_needed / ML_IN_LITER
-annotation_bmi = explan_wno(bmi)  # пояснение ИМТ
+annotation_bmi = explan_who(bmi)  # пояснение ИМТ
 suffix_user_age = suffix_age(user_age)  # суффикс возраста
 
 # 5. Вывод результата
