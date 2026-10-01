@@ -7,23 +7,24 @@ ML_IN_LITER = 1000
 def explan_wno(bmi_value):
     """Возвращает пояснение значеня индекса массы тела по классификации ВОЗ"""
     if (bmi_value < 16.0):
-        return 'Выраженный дефицит массы тела'
+        return 'Выраженный дефицит массы'
     elif (16.0 <= bmi_value <= 18.4):
-        return 'Недостаточная масса тела'
+        return 'Недостаточная масса'
     elif (18.5 <= bmi_value <= 24.9):
-        return 'Нормальная масса тела'
+        return 'Нормальная масса'
     elif (25.0 <= bmi_value <= 29.9):
-        return 'Избыточная масса тела (предожирение)'
+        return 'Избыточная масса тела'
     elif (30.0 <= bmi_value <= 34.9):
         return 'Ожирение I степени'
     elif (35.0 <= bmi_value <= 39.9):
         return 'Ожирение II степени'
     else:
-        return 'Ожирение III степени (морбидное)'
+        return 'Ожирение III степени'
+
 
 # определение суфикса лет/год/года для возраста
-def sufix_age(age):
-    """Возвращает суфикс для возраста (лет/год/года)"""
+def suffix_age(age):
+    """Возвращает суффикс для возраста (лет/год/года)"""
     if ((age % 10 == 1) and (age % 100 != 11)):
         return 'год'
     elif ((age % 10 in [2, 3, 4]) and not (age % 100 in [12, 13, 14])):
@@ -68,11 +69,13 @@ bmi = round(bmi, 1)  # округление до одного знака пос�
 # Подсчет воды: вес * 30 мл
 water_needed = user_weight * WATER_PER_KG
 water_liters = water_needed / ML_IN_LITER
+annotation_bmi = explan_wno(bmi)  # пояснение ИМТ
+suffix_user_age = suffix_age(user_age)  # суффикс возраста
 
 # 5. Вывод результата
 print()
-print(f'Отчет для пользователя: {user_name}  ({user_age} {sufix_age(user_age)})')
-print(f'Ваш Индекс Массы Тела: {bmi} ({explan_wno(bmi)})')
+print(f'Отчет для пользователя: {user_name} ({user_age} {suffix_user_age})')
+print(f'Ваш Индекс Массы Тела: {bmi} ({annotation_bmi})')
 print(f'Рекомендуемая норма воды: {water_liters:.1f} л. в день')
 print()
 print('Расчет окончен. Будьте здоровы!')
