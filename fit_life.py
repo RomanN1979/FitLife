@@ -2,30 +2,32 @@
 WATER_PER_KG = 30
 ML_IN_LITER = 1000
 
-def classification_wno(bmi_value): # Классификация по ВОЗ
+
+def classification_wno(bmi_value):  # Классификация по ВОЗ
     if (bmi_value < 16.0): 
         return 'Выраженный дефицит массы тела'
-    elif (16.0 <= bmi_value <=18.4):
+    elif (16.0 <= bmi_value <= 18.4):
         return 'Недостаточная масса тела'
-    elif (18.5 <= bmi_value <=24.9):
+    elif (18.5 <= bmi_value <= 24.9):
         return 'Нормальная масса тела'
-    elif (25.0 <= bmi_value <=29.9):
+    elif (25.0 <= bmi_value <= 29.9):
         return 'Избыточная масса тела (предожирение)'
-    elif (30.0 <= bmi_value <=34.9):
+    elif (30.0 <= bmi_value <= 34.9):
         return 'Ожирение I степени'
-    elif (35.0 <= bmi_value <=39.9):
+    elif (35.0 <= bmi_value <= 39.9):
         return 'Ожирение II степени'
     else:
         return 'Ожирение III степени (морбидное)'
 
-def get_sufix_age(age): # определение суфикса лет/год/года для возраста
+
+def get_sufix_age(age):  # определение суфикса лет/год/года для возраста
     if ((age % 10 == 1) and (age % 100 != 11)):
         return 'год'
     elif ((age % 10 in [2, 3, 4]) and not (age % 100 in [12, 13, 14])):
         return 'года'
     else:
         return 'лет'
-    
+
 # 1. Приветствие
 print('Вас приветствует цифровой фитнес-трекер')
 print()
