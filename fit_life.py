@@ -1,4 +1,4 @@
-# Проект FitLife - MVP версия 1.0
+# Проект FitLife - MVP версия 1.5.1
 WATER_PER_KG = 30
 ML_IN_LITER = 1000
 
